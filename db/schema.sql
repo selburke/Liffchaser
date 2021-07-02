@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS liffchaser_db; 
+DROP DATABASE IF EXISTS liffchaserr_db; 
 
-CREATE DATABASE liffchaser_db;
+CREATE DATABASE liffchaserr_db;

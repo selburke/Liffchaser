@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
+const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
   try {
@@ -27,25 +28,26 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/newsroute', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
+    const newsData = await fetch("https://bing-news-search1.p.rapidapi.com/news?textFormat=Raw&safeSearch=Off&category=Technology&count=1", {
+      "method": "GET",
+      "headers": {
+        "x-bingapis-sdk": "true",
+        "x-rapidapi-key": "097fb3d41amsh0e2da97c764226bp163ae3jsnb6ec3626050a",
+        "x-rapidapi-host": "bing-news-search1.p.rapidapi.com"
+      }
     });
 
-    const project = projectData.get({ plain: true });
-
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
-    });
+    res.render('news', {
+      newsData: newsData.value
+      
+    }
+    
+     );
   } catch (err) {
     res.status(500).json(err);
+    console.log("news");
   }
 });
 
