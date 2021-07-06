@@ -14,7 +14,18 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">💸</span>
-        <a href="/">Liffchaser!</a>
+       
+        {{#if logged_in}}
+        <a href="/profile">Liffchaser!</a>
+       {{else}}
+       <a href="/">Liffchaser!</a>
+        {{/if}}
+
+         {{!-- {{#if logged_in}}
+        <a href="/profile"></a> 
+        {{else}}
+        <a href="/login"></a>
+        {{/if}} --}}
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
