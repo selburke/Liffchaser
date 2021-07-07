@@ -19,9 +19,6 @@ a {
   color: black;
 }
 
-.logInForm {
-  display: none;
-}
 
 h1 {
   display: inline-block;
@@ -31,35 +28,22 @@ h1 {
   padding-left: 25px;
 }
 
-.signUpForm{
-  height: fit-content;
-  width: 550px;
-  float: right;
-  padding-top: 20px;
+h2 {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
 }
+
+
 
 
 .carousel-inner{
   height:fit-content;
-  width: 550px;
+  width: fit-content;
   float: left;
 }
 
-#signUpBtn{
-  display: flex;
-  justify-content: center;
-  padding-bottom: 20px;
-}
 
-#or{
-  display: flex;
-  justify-content: center;
-}
-
-#logInBtn{
-  display: flex;
-  justify-content: center;
-}
 
 .ourStory{
   padding-left: 50px;
@@ -76,10 +60,4 @@ h1 {
   padding-left: 50px;
   padding-bottom: 25px;
   width: 550px;
-}
-
-#appLoad{
-  border: solid black;
-  height: 300px;
-  width: 300px;
 }
