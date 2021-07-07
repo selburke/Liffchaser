@@ -5,22 +5,8 @@ const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
-
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      projects, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -37,8 +23,8 @@ router.get('/newsroute', async (req, res) => {
         "x-rapidapi-key": "097fb3d41amsh0e2da97c764226bp163ae3jsnb6ec3626050a",
         "x-rapidapi-host": "bing-news-search1.p.rapidapi.com"
       }
-    });
-
+    }).then(response => response.json()); 
+    console.log("newsData", newsData)
     res.render('news', {
       newsData: newsData.value
       
