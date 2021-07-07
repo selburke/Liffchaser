@@ -13,10 +13,16 @@
 <body>
     
     <header>
-            <h1>Liffchaser</h1>
+            <a href="/"><h1>Liffchaser</h1></a>
             <nav>
                 <ul class="nav justify-content-end">
-                    <li class="nav-item"><a id="about-us" class="nav-link active" aria-current="page" href="/views/aboutus.handlebars">About Us</a></li>
+                    <li class="nav-item"><a id="about-us" class="nav-link" aria-current="page" href="/aboutus">About Us</a></li>
+                    {{#if loggedIn }}
+                    <li class="nav-item"><a id="dashboard" class="nav-link" aria-current="page" href="/dashboard">Home</a></li>
+                    <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page" href="/tracker">Tracker</a></li>
+                    <li class="nav-item"><a id="news" class="nav-link" aria-current="page" href="/news">News</a></li>
+                    <li class="nav-item"><a id="timer" class="nav-link" aria-current="page" href="/timer">Timer</a></li>
+                    {{/if}}
                 </ul>
             </nav>
         </header>
@@ -26,7 +32,8 @@
       {{{ body }}}
     </main>
 
-
+  
+<script src="/public/js/login.js"></script>
 </body>
 
 </html>
