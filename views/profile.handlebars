@@ -1,48 +1,57 @@
+<title>
+    <li class="nav-item"><a id="dashboard" class="nav-link" aria-current="page" href="/profile">Home</a></li>
+                    <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page" href="/tracker">Tracker</a></li>
+                    <li class="nav-item"><a id="news" class="nav-link" aria-current="page" href="/news">News</a></li>
+                    <li class="nav-item"><a id="timer" class="nav-link" aria-current="page" href="/timer">Timer</a></li>
+                    <li class= "nav-item"><a id="logout" class="nav-link"aria-current="page" href="/logout">Logout</a></li>
+</title>
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
-
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Project:</h3>
+    <h3>Please checkout the activities for today</h3>
+<section class="checklist">
 
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="project-name">project name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
-      </div>
-      <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
+    <ul class="list-group">
 
-  {{#if projects.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Apply to jobs
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Update Application Tracker
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Practice Coding
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Read an Article
+        </li>
 
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
+    </ul>   
 
-<script src="./js/profile.js"></script>
+</section>
+
+<section class="apptrackDash">
+
+    <button><a id="trackerDashBtn" href="/tracker">Application Tracker</a></button>
+
+</section>
+
+<section class="dailynewsDash">
+
+    <button><a id="newsDashBtn" href="/news">Daily News</a></button>
+
+</section>
+
+<section class="timerDash">
+
+    <button><a id="timerDashBtn" href="/timer">Practice Timer</a></button>
+
+</section>

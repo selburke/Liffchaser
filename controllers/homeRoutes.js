@@ -49,6 +49,45 @@ router.get('/project/:id', async (req, res) => {
   }
 });
 
+
+router.get('/aboutus', async (req, res) => {
+
+  res.render('aboutus');
+});
+
+router.get('/news', async (req, res) => {
+  try {
+    const newsData = await fetch("https://bing-news-search1.p.rapidapi.com/news?textFormat=Raw&safeSearch=Off&category=Technology&count=1", {
+      "method": "GET",
+      "headers": {
+        "x-bingapis-sdk": "true",
+        "x-rapidapi-key": "097fb3d41amsh0e2da97c764226bp163ae3jsnb6ec3626050a",
+        "x-rapidapi-host": "bing-news-search1.p.rapidapi.com"
+      }
+    }).then(response => response.json()); 
+    console.log("newsData", newsData)
+    res.render('news', {
+      newsData: newsData.value
+      
+    }
+    
+     );
+  } catch (err) {
+    res.status(500).json(err);
+    console.log("news");
+  }
+});
+
+router.get('/timer', async (req, res) => {
+
+  res.render('timer');
+});
+
+router.get('/tracker', async (req, res) => {
+
+  res.render('tracker');
+});
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {

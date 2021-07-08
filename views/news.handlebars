@@ -1,0 +1,6 @@
+<h1>NEWS TEST</h1>
+<div id="newsContainer"> 
+    {{#each newsData as |article|}} 
+    <p><a href="{{article.url}}" target="_blank">{{article.name}}</a></p>
+    {{/each}}
+</div>
