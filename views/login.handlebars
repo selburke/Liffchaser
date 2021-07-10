@@ -1,68 +1,73 @@
-{{!-- <main class="container container-fluid mt-5">
-        <section class="previewCarousel">
+    {{#if logged_in}}
+    <div class="row">
+  <div class="col-auto">
+  </div>
+</div>
 
-            <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/public/images/liffchaser-carousel-1.jpg" class="d-block w-100" alt="learnCode">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/public/images/liffchaser-carousel-2.jpg" class="d-block w-100" alt="learnCollab">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/public/images/liffchaser-carousel-3.jpg" class="d-block w-100" alt="learnRead">
-                  </div>
-                </div>
-              </div>
+<section class="checklist">
 
-        </section>
+    <ul class="list-group">
 
-        <div class="row">
-            <div class="col-md-6">
-              <h2>Log In</h2>
-          
-              <form class="form login-form">
-                <div class="form-group mb-3">
-                  <label for="email-login" class="form-label">Email</label>
-                  <input class="form-control" type="text" id="email-login" />
-                </div>
-                <div class="form-group mb-3">
-                  <label for="password-login" class="form-label">Password</label>
-                  <input class="form-input form-control" type="password" id="password-login" />
-                </div>
-                <div class="form-group mb-3">
-                  <button class="btn btn-primary" type="submit">Log In</button>
-                </div>
-              </form>
-            </div>
-            <div class="col-md-6">
-              <h2>Sign Up</h2>
-          
-              <form class="form signup-form">
-                <div class="form-group mb-3">
-                  <label for="name-signup" class="form-label">Name</label>
-                  <input class="form-control" type="text" id="name-signup" />
-                </div>
-                <div class="form-group mb-3">
-                  <label for="email-signup" class="form-label">Email</label>
-                  <input class="form-control" type="text" id="email-signup" />
-                </div>
-                <div class="form-group mb-3">
-                  <label for="password-signup" class="form-label">Password</label>
-                  <input class="form-input form-control" type="password" id="password-signup" />
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary" type="submit">Sign Up</button>
-                </div>
-              </form>
-            </div>
-          </div>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Apply to jobs
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Update Application Tracker
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Practice Coding
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Read an Article
+        </li>
 
-    </main> --}}
+    </ul>   
 
+</section>
+
+<div class="appsDash">
+<section class="apptrackDash">
+
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <a class="card-title" id="trackerDashBtn" href="/tracker">Application Tracker</a>
+  </div>
+</div>
+
+
+</section>
+
+<section class="dailynewsDash">
+
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <a class="card-title" id="newsDashBtn" href="/news">Daily News</a>
+  </div>
+</div>
+
+    
+
+</section>
+
+<section class="timerDash">
+
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <a class="card-title" id="timerDashBtn" href="/timer">Practice Timer</a>
+  </div>
+</div>
+
+</section>
+</div>
+    
+{{else}}
     <div class="row">
   <div class="col-md-6">
-    <h2>Login</h2>
+    <h2 class="logsignBtn">Log In</h2>
 
     <form class="form login-form">
       <div class="form-group">
@@ -79,7 +84,7 @@
     </form>
   </div>
   <div class="col-md-6">
-    <h2>Signup</h2>
+    <h2 class="logsignBtn">Sign Up</h2>
 
     <form class="form signup-form">
       <div class="form-group">
@@ -102,4 +107,4 @@
 </div>
 
 <script src="./js/login.js"></script>
-
+{{/if}}

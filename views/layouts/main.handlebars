@@ -13,44 +13,21 @@
 <body>
     
     <header>
-            <a href="/"><h1>Liffchaser</h1></a>
-            <nav>
+      
+      <a href="/"><h1>Liffchaser</h1></a>
+      
+      <nav>
         <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
         <ul class="nav justify-content-end">
-
-        <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page" href="/profile">Profile</a></li>
-         <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page" href="/tracker">Tracker</a></li>
-                    <li class="nav-item"><a id="news" class="nav-link" aria-current="page" href="/news">News</a></li>
-                    <li class="nav-item"><a id="timer" class="nav-link" aria-current="page" href="/timer">Timer</a></li>
-                    <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page"><button class="no-button" id="logout">logout</button></a></li>
-        <li class="nav-item" class="nav-link" aria-current="page">   </li>
-           
-        </ul>
-    
-        {{else}}
-        <a href="/login">login</a>
+          <li class="nav-items"><a id="aboutus" class="nav-link" aria-current="page" href="/aboutus">About Us</a></li>
+        {{#if logged_in}}
+          <li class="nav-item"><a id="profile" class="nav-link" aria-current="page" href="/profile">Home</a></li>
+          <li class="nav-item"><a id="logout" class="nav-link" aria-current="page">Log Out</a></li>
         {{/if}}
+        </ul>
       </nav>
-            {{!-- <nav>
-              <li class="nav-item"><a id="about-us" class="nav-link" aria-current="page" href="/aboutus">About Us</a></li>
-                <ul class="nav justify-content-end">
-                  {{#if loggedIn }}
-                    <a href="/profile">profile</a> 
-                    <li class="nav-item"><a id="dashboard" class="nav-link" aria-current="page" href="/profile">Home</a></li>
-                    <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page" href="/tracker">Tracker</a></li>
-                    <li class="nav-item"><a id="news" class="nav-link" aria-current="page" href="/news">News</a></li>
-                    <li class="nav-item"><a id="timer" class="nav-link" aria-current="page" href="/timer">Timer</a></li>
-                    <li class= "nav-item"><a id="logout" class="nav-link"aria-current="page" href="/logout">Logout</a></li> 
-                    <li class= "nav-item"><button class="no-button" id="logout">logout</button></li>
-                    {{else}}
-                    <a href="/login">login</a>
-                  
-                 
-                    {{/if}}
-                </ul>
-            </nav> --}}
-        </header>
+            
+    </header>
 
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
@@ -62,7 +39,6 @@
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
-{{!-- <script src="/public/js/login.js"></script>
-</body> --}}
+
 
 </html>

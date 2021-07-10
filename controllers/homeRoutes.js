@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
+    res.render('login', { 
       projects, 
       logged_in: req.session.logged_in 
     });
@@ -55,7 +55,7 @@ router.get('/aboutus', async (req, res) => {
   res.render('aboutus');
 });
 
-router.get('/news', async (req, res) => {
+router.get('/news', withAuth, async (req, res) => {
   try {
     const newsData = await fetch("https://bing-news-search1.p.rapidapi.com/news?textFormat=Raw&safeSearch=Off&category=Technology&count=1", {
       "method": "GET",
@@ -67,7 +67,8 @@ router.get('/news', async (req, res) => {
     }).then(response => response.json()); 
     console.log("newsData", newsData)
     res.render('news', {
-      newsData: newsData.value
+      newsData: newsData.value,
+      logged_in: true
       
     }
     
@@ -78,14 +79,14 @@ router.get('/news', async (req, res) => {
   }
 });
 
-router.get('/timer', async (req, res) => {
+router.get('/timer', withAuth, async (req, res) => {
 
-  res.render('timer');
+  res.render('timer', {logged_in: true});
 });
 
-router.get('/tracker', async (req, res) => {
+router.get('/tracker', withAuth, async (req, res) => {
 
-  res.render('tracker');
+  res.render('tracker', {logged_in: true});
 });
 
 // Use withAuth middleware to prevent access to route

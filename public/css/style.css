@@ -28,14 +28,50 @@ h1 {
   padding-left: 25px;
 }
 
-h2 {
+h2{
+  display: inline-block;
+  font-size: 45px;
+  margin-left: 20px;
+  padding-top: 30px;
+  padding-left: 25px;
+}
+
+.logsignBtn {
   display: flex;
   justify-content: center;
   padding-top: 25px;
 }
 
 
+.list-group{
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 175px;
+  height: 350px;
+  width: 400px;
+  margin: 0;
+}
 
+.list-group-item{
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.checklist{
+display: inline-block;
+}
+
+.appsDash{
+  display: inline-block;
+  width: 350px;
+}
+
+main{
+  margin-left: 0%;
+  margin-right: 0%;
+}
 
 .carousel-inner{
   height:fit-content;
@@ -43,6 +79,22 @@ h2 {
   float: left;
 }
 
+.card-body{
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 100x;
+  width: 280px;
+  border-radius: 20px;
+}
+
+.card-title{
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
 
 
 .ourStory{
