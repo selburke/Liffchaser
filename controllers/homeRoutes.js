@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
-
+require('dotenv').config();
+const fetch = require('node-fetch');
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -55,29 +56,30 @@ router.get('/aboutus', async (req, res) => {
   res.render('aboutus');
 });
 
-router.get('/news', withAuth, async (req, res) => {
+router.get('/news', async (req, res) => {
   try {
     const newsData = await fetch("https://bing-news-search1.p.rapidapi.com/news?textFormat=Raw&safeSearch=Off&category=Technology&count=1", {
       "method": "GET",
       "headers": {
         "x-bingapis-sdk": "true",
-        "x-rapidapi-key": "097fb3d41amsh0e2da97c764226bp163ae3jsnb6ec3626050a",
+        "x-rapidapi-key": process.env.RAPID_API_KEY,
         "x-rapidapi-host": "bing-news-search1.p.rapidapi.com"
       }
     }).then(response => response.json()); 
     console.log("newsData", newsData)
     res.render('news', {
       newsData: newsData.value,
-      logged_in: true
+      logged_in: req.session.logged_in,
       
     }
     
      );
   } catch (err) {
+    console.log("news error: ", err);
     res.status(500).json(err);
-    console.log("news");
   }
 });
+
 
 router.get('/timer', withAuth, async (req, res) => {
 

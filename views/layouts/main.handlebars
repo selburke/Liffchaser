@@ -20,9 +20,12 @@
         <!-- Conditionally render login or logout links -->
         <ul class="nav justify-content-end">
           <li class="nav-items"><a id="aboutus" class="nav-link" aria-current="page" href="/aboutus">About Us</a></li>
+          <li class="nav-item"><a id="news" class="nav-link" aria-current="page" href="/news">News</a></li>
         {{#if logged_in}}
           <li class="nav-item"><a id="profile" class="nav-link" aria-current="page" href="/profile">Home</a></li>
           <li class="nav-item"><a id="logout" class="nav-link" aria-current="page">Log Out</a></li>
+       {{else}}
+          <li class="nav-item"><a href="/login" class="nav-link" aria-current="page">login</a></li>
         {{/if}}
         </ul>
       </nav>
