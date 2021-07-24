@@ -1,18 +1,9 @@
-<title>
-    <li class="nav-item"><a id="dashboard" class="nav-link" aria-current="page" href="/profile">Home</a></li>
-                    <li class="nav-item"><a id="tracker" class="nav-link" aria-current="page" href="/tracker">Tracker</a></li>
-                    <li class="nav-item"><a id="news" class="nav-link" aria-current="page" href="/news">News</a></li>
-                    <li class="nav-item"><a id="timer" class="nav-link" aria-current="page" href="/timer">Timer</a></li>
-                    <li class= "nav-item"><a id="logout" class="nav-link"aria-current="page" href="/logout">Logout</a></li>
-</title>
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Please checkout the activities for today</h3>
+
 <section class="checklist">
 
     <ul class="list-group">
@@ -38,20 +29,37 @@
 
 </section>
 
+<div class="appsDash">
 <section class="apptrackDash">
 
-    <button><a id="trackerDashBtn" href="/tracker">Application Tracker</a></button>
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <a class="card-title" id="trackerDashBtn" href="/tracker">Application Tracker</a>
+  </div>
+</div>
+
 
 </section>
 
 <section class="dailynewsDash">
 
-    <button><a id="newsDashBtn" href="/news">Daily News</a></button>
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <a class="card-title" id="newsDashBtn" href="/news">Daily News</a>
+  </div>
+</div>
+
+    
 
 </section>
 
 <section class="timerDash">
 
-    <button><a id="timerDashBtn" href="/timer">Practice Timer</a></button>
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <a class="card-title" id="timerDashBtn" href="/timer">Practice Timer</a>
+  </div>
+</div>
 
 </section>
+</div>

@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
+require('dotenv').config();
+const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
   try {
@@ -18,7 +20,7 @@ router.get('/', async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
+    res.render('login', { 
       projects, 
       logged_in: req.session.logged_in 
     });
@@ -50,10 +52,32 @@ router.get('/project/:id', async (req, res) => {
 });
 
 
-router.get('/aboutus', async (req, res) => {
+// router.get('/aboutus', async (req, res) => {
 
-  res.render('aboutus');
+//   res.render('aboutus');
+// });
+
+router.get('/aboutus', withAuth, async (req, res) => {
+  try {
+    // console.log("profile page");
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Project }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('aboutus', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
 
 router.get('/news', async (req, res) => {
   try {
@@ -61,32 +85,52 @@ router.get('/news', async (req, res) => {
       "method": "GET",
       "headers": {
         "x-bingapis-sdk": "true",
-        "x-rapidapi-key": "097fb3d41amsh0e2da97c764226bp163ae3jsnb6ec3626050a",
+        "x-rapidapi-key": process.env.RAPID_API_KEY,
         "x-rapidapi-host": "bing-news-search1.p.rapidapi.com"
       }
     }).then(response => response.json()); 
     console.log("newsData", newsData)
     res.render('news', {
-      newsData: newsData.value
+      newsData: newsData.value,
+      logged_in: req.session.logged_in,
       
     }
     
      );
   } catch (err) {
+    console.log("news error: ", err);
     res.status(500).json(err);
-    console.log("news");
   }
 });
 
-router.get('/timer', async (req, res) => {
 
-  res.render('timer');
+router.get('/timer', withAuth, async (req, res) => {
+
+  res.render('timer', {logged_in: true});
 });
 
-router.get('/tracker', async (req, res) => {
 
-  res.render('tracker');
+router.get('/tracker', withAuth, async (req, res) => {
+  try {
+    // console.log("profile page");
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Project }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('tracker', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {

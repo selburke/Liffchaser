@@ -34,6 +34,9 @@ Project.init(
         key: 'id',
       },
     },
+    // email_used: {
+    //   type: DataTypes.STRING,
+    // },
   },
   {
     sequelize,

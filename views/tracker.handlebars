@@ -1,24 +1,95 @@
-<section class="appTrack">
-            <h1>Application Tracker</h1>
-            <div class="appLoad"></div>
-    </section>
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
 
-    <section class="newApp">
-        <h1>New Application</h1>
-        <div class="newAppForm">
-            <form>
-                <div class="mb-3">
-                  <label for="companyName" class="form-label">Company</label>
-                  <input type="other" class="form-control" id="companyName">
-                </div>
-                <div class="mb-3">
-                  <label for="jobTitle" class="form-label">Job Title</label>
-                  <input type="other" class="form-control" id="jobTitle">
-                </div>
-                <div class="mb-3">
-                    <label for="emailUsed" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="emailUsed">
-                </div>
-            </form>
-        </div>
-    </section>
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Application Tracker:</h3>
+
+    <form class="form new-project-form">
+      <div class="form-group">
+        <label for="project-name">Company name:</label>
+        <input class="form-input" type="text" id="project-name" name="project-name" />
+      </div>
+      <div class="form-group">
+        <label for="project-funding">salary ($):</label>
+        <input class="form-input" type="text" id="project-funding" name="project-funding" />
+      </div>
+      <div class="form-group">
+        <label for="email_used">Email:</label>
+        <input class="form-input" type="text" id="email_used" name="email_used" />
+      </div>
+      <div class="form-group">
+        <label for="project-desc">Job description:</label>
+        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div> 
+
+{{!-- <section class="checklist">
+
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Apply to jobs
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Update Application Tracker
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Practice Coding
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Read an Article
+        </li>
+
+    </ul>   
+
+</section> --}}
+
+{{!-- <section class="apptrackDash">
+
+    <button><a id="trackerDashBtn" href="./tracker.handlebars">Application Tracker</a></button>
+
+</section>
+
+<section class="dailynewsDash">
+
+    <button><a id="newsDashBtn" href="./news.handlebars">Daily News</a></button>
+
+</section>
+
+<section class="timerDash">
+
+    <button><a id="timerDashBtn" href="./timer.handlebars">Practice Timer</a></button>
+
+</section> --}}
+
+  {{#if projects.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
+
+    {{#each projects as |project|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/tracker.js"></script>
